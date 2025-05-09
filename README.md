@@ -17,7 +17,22 @@ Synthesis requires three files as follows,
 ◦ Liberty Files (.lib)
 
 ◦ Verilog/VHDL Files (.v or .vhdl or .vhd)
-
+~~~
+`timescale 1ns/1ns
+module counter(clk,m,rst,count);
+input clk,m,rst;
+output reg [3:0] count;
+always@(posedge clk or negedge rst)
+begin
+if (!rst)
+count=0;
+else if(m)
+count=count+1;
+else
+count=count-1;
+end
+endmodule
+~~~
 ◦ SDC (Synopsis Design Constraint) File (.sdc)
 
  ### Step 2 : Creating an SDC File
@@ -74,6 +89,9 @@ used.
 
 #### Timing Report: 
 ![Screenshot (215)](https://github.com/user-attachments/assets/7b5ba931-dafc-4d3e-968e-b76624f26b0a)
+
+#### Netlist Report:
+![Screenshot (214)](https://github.com/user-attachments/assets/f35ae1d3-7209-476a-9eda-74cb2c71e47f)
 
 #### Result: 
 
